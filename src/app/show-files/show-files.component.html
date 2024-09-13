@@ -1,0 +1,12 @@
+
+
+  <div class="container">
+    <h2>Uploaded Images</h2>
+    
+    <div class="gallery">
+      <div class="image-card" *ngFor="let fileUrl of fileUrls">
+        <img [src]="'http://localhost:9000' + fileUrl" alt="Uploaded Image" class="uploaded-image" />
+      </div>
+    </div>
+  </div>
+  

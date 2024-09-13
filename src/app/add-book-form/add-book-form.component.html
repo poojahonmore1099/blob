@@ -1,0 +1,70 @@
+<div class="container mt-4">
+  <div class="card">
+    <div class="card-header bg-primary text-white">
+      <h4 class="mb-0">Add New Book</h4>
+    </div>
+    <div class="card-body">
+      <form #bookForm="ngForm" (ngSubmit)="getBookFormData(bookForm.value)" novalidate>
+        <div class="form-group mb-3">
+          <label for="bookTitle">Book Title</label>
+          <input
+            type="text"
+            ngModel
+            id="bookTitle"
+            placeholder="Enter book title"
+            name="bookTitle"
+            class="form-control"
+            required
+            #bookTitle="ngModel"
+          />
+          <div *ngIf="bookTitle.invalid && (bookTitle.dirty || bookTitle.touched)" class="text-danger">
+            <div *ngIf="bookTitle.errors?.['required']">
+              Book title is required.
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group mb-3">
+          <label for="subTitle">Book Subtitle</label>
+          <input
+            type="text"
+            ngModel
+            id="subTitle"
+            placeholder="Enter book subtitle"
+            name="subTitle"
+            class="form-control"
+            #subTitle="ngModel"
+          />
+          <div *ngIf="subTitle.invalid && (subTitle.dirty || subTitle.touched)" class="text-danger">
+            <!-- Add specific validation messages if needed -->
+          </div>
+        </div>
+
+        <div class="form-group mb-3">
+          <label for="price">Book Price</label>
+          <input
+            type="number"
+            ngModel
+            id="price"
+            placeholder="Enter book price"
+            name="price"
+            class="form-control"
+            required
+            min="1"
+            #price="ngModel"
+          />
+          <div *ngIf="price.invalid && (price.dirty || price.touched)" class="text-danger">
+            <div *ngIf="price.errors?.['required']">
+              Book price is required.
+            </div>
+            <div *ngIf="price.errors?.['min']">
+              Book price must be a positive number.
+            </div>
+          </div>
+        </div>
+
+        <button class="btn btn-primary" type="submit" [disabled]="bookForm.invalid">Add New Book</button>
+      </form>
+    </div>
+  </div>
+</div>

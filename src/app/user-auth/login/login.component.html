@@ -1,0 +1,74 @@
+<div class="form-container">
+
+    <!-- Template driven form example  -->
+
+
+  <h2>Template driven form</h2>
+  <form #loginfom="ngForm" (ngSubmit)="userLogin(loginfom.value)">
+    <input
+      required
+      #name="ngModel"
+      type="text"
+      placeholder="enter name"
+      name="name"
+      ngModel
+    />
+    <br /><span *ngIf="name.invalid && name.touched" style="color: red"
+      >Please enter valid name</span
+    ><br />
+    <input
+      minlength="8"
+      required
+      #email="ngModel"
+      type="text"
+      placeholder="enter password"
+      name="password"
+      ngModel
+    />
+    <br /><span *ngIf="email.invalid && email.touched" style="color: red"
+      >Please enter valid email</span
+    ><br />
+    <button [disabled]="loginfom.invalid" type="submit">login</button>
+  </form>
+
+
+
+<!-- reactive form example -->
+
+
+
+
+
+  <h2>Reactive form</h2>
+  <form [formGroup]="loginForm" (ngSubmit)="loginUser()">
+    <input
+      formControlName="name"
+      type="text"
+      placeholder="enter name"
+      name="name"
+      ngModel
+    />
+    <br />
+    <span style="color: red" *ngIf="name && name.invalid && name.touched"
+      >please enter valid name</span
+    >
+    <br />
+    <input
+      formControlName="password"
+      minlength="8"
+      type="text"
+      placeholder="enter password"
+      name="password"
+      ngModel
+    />
+    <br />
+  
+      <span style="color: red" *ngIf="name && name.invalid && name.touched"
+        >please enter valid password</span
+      >
+  
+
+    <br />
+    <button type="submit">login</button>
+  </form>
+</div>

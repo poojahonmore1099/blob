@@ -1,0 +1,6 @@
+<li>{{item.name}}</li>
+<li>{{item.age}}</li>
+<li>{{item.email}}</li>
+
+<input type="text" #box>
+<button (click)="updateDataEvent.emit(box.value)">update data</button>

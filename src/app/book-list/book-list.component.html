@@ -1,0 +1,38 @@
+<div class="container mt-3">
+	<div class="row">
+		<div class="col-md-12">
+			<h1 class="text-center mb-3">welcome to Book app</h1>
+			
+			<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Sr.No</th>
+      <th scope="col">Book Title</th>
+      <th scope="col">Sub Title</th>
+      <th scope="col">Price</th>
+       <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+    <tr *ngFor="let item of books">
+      <th scope="row">{{item.id}}</th>
+      <td>{{item.title.title}}</td>
+      <td>{{item.title.subTitle}}</td>
+      <td>{{item.price}}</td>
+      <td>
+      <a style="margin-right: 20px;" [routerLink]="['/update',item.id]"><i class="fa-solid fa-pen-to-square"></i></a>
+      <a (click)="deleteBookById(item.id)"><i class="fa-solid fa-trash"></i></a></td>
+    </tr>
+ 
+  </tbody>
+</table>
+
+
+<div class="container text-lg-right">
+<a [routerLink]="['/addBook']" class="btn btn-outline-success"> Add Book</a>
+</div>
+		</div>
+	</div>
+</div>
+
